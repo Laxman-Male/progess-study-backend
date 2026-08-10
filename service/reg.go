@@ -22,13 +22,13 @@ func ValidateReg(reg allstruct.RegInfo) (string, error) {
 	if len(reg.Password) < 5 {
 		return " ", errors.New("password length must be greater than 5")
 	}
-	userId, err := repo.ExecuteRegQuery(reg)
+	_, err = repo.ExecuteRegQuery(reg)
 	if err != nil {
 		fmt.Println("error in insert vlaue service")
 		return " ", errors.New("error in insert value")
 	}
 
-	return userId, nil
+	return reg.Email, nil
 }
 
 func ValidateLogin(login allstruct.LoginFromUser) (string, error) {

@@ -28,13 +28,13 @@ func HandleRegister(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "invalid request", http.StatusBadRequest)
 			return
 		}
-		userId, err := service.ValidateReg(reg)
+		userEmail, err := service.ValidateReg(reg)
 		if err != nil {
 			http.Error(w, "unable to insert value", http.StatusBadRequest)
 			return
 
 		}
-		token, err := allstruct.GenerateJWT(userId)
+		token, err := allstruct.GenerateJWT(userEmail)
 		if err != nil {
 			http.Error(w, "failed to generate token", http.StatusInternalServerError)
 			return
@@ -42,7 +42,7 @@ func HandleRegister(w http.ResponseWriter, r *http.Request) {
 		// ✅ Respond with success message
 		response := map[string]string{
 			"message": "Registration successful!",
-			"userId":  userId,
+			"userId":  userEmail,
 			"token":   token,
 		}
 		w.Header().Set("Content-Type", "application/json")

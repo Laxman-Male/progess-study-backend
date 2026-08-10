@@ -15,7 +15,7 @@ const (
 	//not in work
 	GetPlan = `select study from plan where id=?`
 	//getting user details for profile
-	GetUserDetail = `select name, email from register where id=?`
+	GetUserDetail = `select name, email from register where email=?`
 	//save plan to DB
 	SavePlanOfUser = `insert into plan(planSavedByUser,id,title,weekCount,CreatedAt) values(?,?,?,?,?)`
 	//insert the 10 MCQs generated alongside the plan, tied to the new planID
