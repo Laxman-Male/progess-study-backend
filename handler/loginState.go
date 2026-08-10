@@ -15,7 +15,7 @@ func HandleLoginState(w http.ResponseWriter, r *http.Request) {
 	// if r.Method==http.MethodGet{
 	// name := r.URL.Query().Get("name")
 	// email := r.URL.Query().Get("email")
-	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:4200")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
 	if r.Method == http.MethodOptions {
