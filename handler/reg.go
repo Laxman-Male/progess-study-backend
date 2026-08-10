@@ -78,12 +78,12 @@ func HandleLogin(w http.ResponseWriter, r *http.Request) {
 		UserLoggedIn, err := service.ValidateLogin(loginInfoUser)
 		if err != nil {
 			http.Error(w, "check name ans password", http.StatusBadRequest)
+			return
 
 		}
 		if UserLoggedIn != "" {
 			fmt.Println("user id is =", UserLoggedIn)
 
-			fmt.Println(err)
 		} else {
 			fmt.Println("user id is blank =", UserLoggedIn)
 		}
