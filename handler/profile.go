@@ -39,7 +39,7 @@ func Profile(w http.ResponseWriter, r *http.Request) {
 
 	// The JWTAuthMiddleware has already run and stored the userId in the request context.
 	// We retrieve it here.
-	userEmail, ok := GetUserIDFromContext(r.Context())
+	userID, ok := GetUserIDFromContext(r.Context())
 	if !ok {
 		// This should theoretically not happen if middleware is correctly applied,
 		// but it's a good safeguard.
@@ -49,8 +49,8 @@ func Profile(w http.ResponseWriter, r *http.Request) {
 
 	// Now, use this validated userId to fetch the user's data from your service/database.
 	// Assuming service.GetUserByID is a function that retrieves user details from your DB.
-	fmt.Println("in getUserid frm context", userEmail)
-	user, err := service.GetUserByID(userEmail) // You'll need to implement this in your service package
+	fmt.Println("in getUserid frm context", userID)
+	user, err := service.GetUserByID(userID) // You'll need to implement this in your service package
 	if err != nil {
 		http.Error(w, "--User not found or database error--", http.StatusNotFound)
 		return

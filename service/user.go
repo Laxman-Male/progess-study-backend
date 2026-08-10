@@ -69,8 +69,8 @@ type User struct {
 // }
 
 // GetUserByID retrieves a user's details from the mock database by their UserID.
-func GetUserByID(userEmail string) (allstruct.GetProfileDetails, error) {
-	user, err := repo.Profile(userEmail)
+func GetUserByID(userID string) (allstruct.GetProfileDetails, error) {
+	user, err := repo.Profile(userID)
 	if err != nil {
 		fmt.Println("error in user.go service")
 		return allstruct.GetProfileDetails{}, err
